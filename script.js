@@ -1,14 +1,37 @@
-const btn = document.querySelector("#btn");
+let count = 0;
+const countBtn = document.querySelector("#countBtn");
+const resetBtn = document.querySelector("#resetBtn");
 
-const handleClick1 = () => {
-  console.log("첫 번째 함수");
-};
+countBtn.innerText = count;
 
-const handleClick2 = () => {
-  console.log("두 번째 함수");
-};
+countBtn.addEventListener("click", () => {
+  countBtn.innerText = ++count;
+});
 
-btn.addEventListener("click", handleClick1);
-btn.addEventListener("click", handleClick2);
+resetBtn.addEventListener("click", () => {
+  count = 0;
+  countBtn.innerText = count;
+});
 
-btn.removeEventListener("click", handleClick1);
+const colorSelect = document.querySelector("#colorSelect");
+const colorBox = document.querySelector("#colorBox");
+
+colorBox.style.width = "100px";
+colorBox.style.height = "100px";
+colorBox.style.backgroundColor = "gray";
+colorBox.style.marginTop = "10px";
+
+colorSelect.addEventListener("change", (e) => {
+  console.log(e);
+  colorBox.style.backgroundColor = e.target.value;
+});
+
+const nameForm = document.querySelector("#nameForm");
+const nameInput = document.querySelector("#nameInput");
+const submitResult = document.querySelector("#submitResult");
+
+nameForm.addEventListener("submit", (e) => {
+  console.log(e);
+  e.preventDefault();
+  submitResult.innerText = `안녕하세요, ${nameInput.value}님!`;
+});
